@@ -3,6 +3,7 @@ import { ArrowUpRight, MoveRight } from "lucide-react";
 import { getImpactStats } from "@/lib/stats";
 import { listOffers, listRequests } from "@/lib/queries";
 import { AnimatedMarqueeHero } from "@/components/ui/hero-3";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Reveal } from "@/components/ui/reveal";
 import {
   Stat,
@@ -264,12 +265,11 @@ export default async function HomePage() {
               introduction, advice, or simply a little help. The point
               isn&apos;t what it&apos;s worth. The point is that it can move.
             </p>
-            <Link
-              href="/signup"
-              className="mt-10 inline-flex items-center gap-2 border-2 border-ink px-7 py-4 font-bold tracking-wide hover:bg-ink hover:text-paper"
-            >
-              Join the market <ArrowUpRight size={18} />
-            </Link>
+            <div className="mt-10 flex justify-center">
+              <ShimmerButton href="/signup">
+                Join the market <ArrowUpRight size={18} />
+              </ShimmerButton>
+            </div>
           </Reveal>
         </div>
       </section>

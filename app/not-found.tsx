@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export default function NotFound() {
   return (
@@ -13,12 +13,9 @@ export default function NotFound() {
         <p className="mt-6 text-muted">
           This page has moved on. Maybe it was given away.
         </p>
-        <Link
-          href="/"
-          className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:brightness-95"
-        >
-          Back to the market
-        </Link>
+        <div className="mt-8 flex justify-center">
+          <ShimmerButton href="/">Back to the market</ShimmerButton>
+        </div>
       </div>
     </main>
   );

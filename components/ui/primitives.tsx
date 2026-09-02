@@ -1,6 +1,7 @@
 import Link from "next/link";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export function Eyebrow({
   children,
@@ -150,12 +151,9 @@ export function EmptyState({
         <p className="mx-auto mt-4 max-w-md text-muted">{children}</p>
       ) : null}
       {action ? (
-        <Link
-          href={action.href}
-          className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:brightness-95"
-        >
-          {action.label}
-        </Link>
+        <div className="mt-8 flex justify-center">
+          <ShimmerButton href={action.href}>{action.label}</ShimmerButton>
+        </div>
       ) : null}
     </div>
   );

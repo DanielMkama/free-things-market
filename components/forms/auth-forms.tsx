@@ -9,7 +9,7 @@ import { SubmitButton } from "@/components/forms/submit";
 
 const initial: FormState = {};
 
-export function SignupForm() {
+export function SignupForm({ defaultEmail }: { defaultEmail?: string }) {
   const [state, action] = useActionState(signUpAction, initial);
   return (
     <form action={action} className="space-y-4">
@@ -20,6 +20,7 @@ export function SignupForm() {
         name="email"
         type="email"
         autoComplete="email"
+        defaultValue={defaultEmail}
         required
       />
       <Field

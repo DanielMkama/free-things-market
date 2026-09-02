@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Store, MapPin } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { SectionHeading } from "@/components/ui/primitives";
-import { formatDate } from "@/lib/utils";
+import { EventCard } from "@/components/ui/event-card";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
+
+const shortDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -43,31 +51,27 @@ export default async function MarketPage() {
 
         <section className="mt-14">
           <h2 className="font-display text-2xl tracking-tight">Next markets</h2>
-          <div className="mt-4">
+          <div className="mt-5">
             {upcoming.length === 0 ? (
               <p className="border border-dashed border-line bg-white/30 p-6 text-muted">
                 No dates announced yet. Join the market online and you&apos;ll
                 be the first to know.
               </p>
             ) : (
-              <ul className="grid gap-px border border-line bg-line">
+              <div className="grid gap-4">
                 {upcoming.map((e) => (
-                  <li key={e.id} className="bg-paper p-6">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="font-display text-xl tracking-tight">
-                        {e.name}
-                      </p>
-                      <span className="text-xs font-bold tracking-widest text-accent-ink">
-                        {formatDate(e.date)}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm font-semibold text-muted">
-                      {e.location}
-                    </p>
-                    <p className="mt-3 text-sm text-muted">{e.description}</p>
-                  </li>
+                  <EventCard
+                    key={e.id}
+                    icon={<Store className="size-5" />}
+                    title={e.name}
+                    description={e.description}
+                    date={shortDate(e.date)}
+                    locationIcon={<MapPin className="size-4 text-accent-ink" />}
+                    location={e.location}
+                    frequency="A few months"
+                  />
                 ))}
-              </ul>
+              </div>
             )}
           </div>
         </section>
@@ -90,12 +94,11 @@ export default async function MarketPage() {
           </p>
         </section>
 
-        <Link
-          href="/signup"
-          className="mt-12 inline-flex items-center gap-2 border-2 border-ink px-6 py-4 font-bold tracking-wide hover:bg-ink hover:text-paper"
-        >
-          Join the market
-        </Link>
+        <div className="mt-12">
+          <ShimmerButton href="/signup" className="w-fit">
+            Join the market
+          </ShimmerButton>
+        </div>
       </div>
     </main>
   );

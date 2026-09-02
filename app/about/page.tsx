@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading, Flow } from "@/components/ui/primitives";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Marquee } from "@/components/ui/marquee";
 
 export const metadata: Metadata = {
@@ -128,12 +129,9 @@ export default function AboutPage() {
               What happens when we make generosity easier?
             </h2>
           </div>
-          <Link
-            href="/signup"
-            className="inline-flex w-fit items-center gap-2 border-2 border-ink px-6 py-4 font-bold tracking-wide hover:bg-ink hover:text-paper"
-          >
+          <ShimmerButton href="/signup" className="w-fit shrink-0">
             Join the market <ArrowUpRight size={18} />
-          </Link>
+          </ShimmerButton>
         </div>
       </section>
     </main>

@@ -5,7 +5,6 @@ import { LoginForm } from "@/components/forms/auth-forms";
 import { Eyebrow } from "@/components/ui/primitives";
 
 export const metadata: Metadata = { title: "Log in" };
-export const dynamic = "force-dynamic";
 
 export default async function LoginPage({
   searchParams,

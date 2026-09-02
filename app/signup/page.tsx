@@ -7,9 +7,14 @@ import { Eyebrow } from "@/components/ui/primitives";
 export const metadata: Metadata = { title: "Join the market" };
 export const dynamic = "force-dynamic";
 
-export default async function SignupPage() {
+export default async function SignupPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ email?: string }>;
+}) {
   const me = await getCurrentUser();
   if (me) redirect(me.onboarded ? "/dashboard" : "/onboarding");
+  const { email } = await searchParams;
 
   return (
     <main className="px-5 py-16 md:px-10">
@@ -31,7 +36,7 @@ export default async function SignupPage() {
           </p>
         </div>
         <div className="border border-ink bg-white/50 p-6 md:p-8">
-          <SignupForm />
+          <SignupForm defaultEmail={email} />
         </div>
       </div>
     </main>
