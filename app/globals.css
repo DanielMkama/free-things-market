@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   THE FREE THINGS MARKET — design system
+   Editorial · warm paper · one lime accent · heavy condensed display
+------------------------------------------------------------------ */
+
+@theme {
+  --color-paper: #f4f1e8;
+  --color-paper-deep: #ece7d9;
+  --color-ink: #16150f;
+  --color-ink-soft: #57534733;
+  --color-muted: #6b6559;
+  --color-line: #d9d3c4;
+  --color-accent: #ceff1a;
+  --color-accent-ink: #5f7500;
+  --color-white: #ffffff;
+
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --breakpoint-xs: 26rem;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv05", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-accent);
+}
+
+/* ---------- Typography scale ---------- */
+
+.u-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.84;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: clamp(3.2rem, 12vw, 10rem);
+}
+
+.u-headline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+}
+
+.u-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+}
+
+.u-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.u-lead {
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Surfaces ---------- */
+
+.u-card {
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-white) 45%, transparent);
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.u-card:hover {
+  background: var(--color-white);
+  border-color: var(--color-ink);
+}
+
+.u-rule {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+/* ---------- Focus ---------- */
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-accent-ink);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ---------- Marquee ---------- */
+
+@keyframes ftm-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.u-marquee {
+  display: inline-flex;
+  min-width: 100%;
+  flex-shrink: 0;
+  gap: 0;
+  animation: ftm-marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-marquee {
+    animation: none;
+  }
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.u-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.u-reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Link underline ---------- */
+
+.u-link {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  transition: background-size 0.2s ease;
+}
+
+.u-link:hover {
+  background-size: 100% 2px;
+}
+
+/* ---------- Field ---------- */
+
+.u-field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: var(--color-white);
+  padding: 0.9rem 1rem;
+  transition: border-color 0.15s ease;
+}
+
+.u-field::placeholder {
+  color: var(--color-muted);
+}
+
+.u-field:focus {
+  border-color: var(--color-ink);
+}
