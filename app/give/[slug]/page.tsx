@@ -161,7 +161,7 @@ export default async function OfferDetailPage({
               ) : (
                 <Link
                   href={`/login?next=/give/${offer.slug}`}
-                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold tracking-wide text-paper hover:bg-black"
+                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold tracking-wide text-paper hover:brightness-95"
                 >
                   Log in to connect
                 </Link>

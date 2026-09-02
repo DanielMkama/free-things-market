@@ -118,7 +118,7 @@ export function Tag({
   const tones = {
     line: "border-line text-muted",
     ink: "border-ink text-ink",
-    accent: "border-ink bg-accent text-ink",
+    accent: "border-ink bg-accent",
   };
   return (
     <span
@@ -152,7 +152,7 @@ export function EmptyState({
       {action ? (
         <Link
           href={action.href}
-          className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:bg-black"
+          className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:brightness-95"
         >
           {action.label}
         </Link>

@@ -40,7 +40,7 @@ export default async function GiveBoardPage({
           </div>
           <Link
             href="/give/new"
-            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:bg-black"
+            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:brightness-95"
           >
             <Plus size={16} /> Post something
           </Link>

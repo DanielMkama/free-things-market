@@ -9,9 +9,9 @@ const base =
   "inline-flex items-center justify-center gap-2 font-bold tracking-wide transition disabled:pointer-events-none disabled:opacity-50 select-none";
 
 const variants: Record<Variant, string> = {
-  solid: "bg-ink text-paper hover:-translate-y-0.5 hover:bg-black",
+  solid: "bg-ink text-paper hover:-translate-y-0.5 hover:brightness-95",
   outline: "border border-ink text-ink hover:bg-ink hover:text-paper",
-  accent: "bg-accent text-ink hover:-translate-y-0.5 hover:brightness-105",
+  accent: "bg-accent hover:-translate-y-0.5 hover:brightness-105",
   ghost: "text-ink hover:bg-paper-deep",
 };
 

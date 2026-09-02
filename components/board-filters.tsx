@@ -78,7 +78,7 @@ export function BoardFilters() {
             className={cn(
               "border px-3 py-1.5 text-xs font-semibold tracking-widest transition",
               current.category === c
-                ? "border-ink bg-accent text-ink"
+                ? "border-ink bg-accent"
                 : "border-line text-muted hover:border-ink hover:text-ink",
             )}
           >

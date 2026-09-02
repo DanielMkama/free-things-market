@@ -13,8 +13,8 @@ export function Marquee({
   return (
     <div
       className={cn(
-        "flex overflow-hidden border-y select-none",
-        dark ? "border-white/15 bg-ink text-paper" : "border-line",
+        "flex overflow-hidden border-y border-line select-none",
+        dark ? "bg-paper-deep" : "bg-transparent",
         className,
       )}
       aria-hidden="true"
@@ -23,7 +23,7 @@ export function Marquee({
         {row.map((item, i) => (
           <span key={i} className="flex items-center">
             <span className="u-eyebrow px-6">{item}</span>
-            <span className={dark ? "text-accent" : "text-accent-ink"}>◆</span>
+            <span className="text-accent-ink">◆</span>
           </span>
         ))}
       </div>

@@ -181,19 +181,19 @@ export default async function HomePage() {
       </section>
 
       {/* Need board preview */}
-      <section className="border-b border-line bg-ink px-5 py-20 text-paper md:px-10">
+      <section className="border-b border-line bg-paper-deep px-5 py-20 md:px-10">
         <div className="mx-auto max-w-[1500px]">
           <div className="grid gap-10 md:grid-cols-[1fr_1.4fr]">
             <div>
-              <p className="u-eyebrow text-accent">Need board</p>
+              <p className="u-eyebrow text-accent-ink">Need board</p>
               <h2 className="mt-4 u-headline">People need something.</h2>
-              <p className="mt-6 max-w-md text-paper/60">
+              <p className="mt-6 max-w-md text-muted">
                 Asking isn&apos;t charity. Someone here may already have exactly
                 what you&apos;re looking for.
               </p>
               <Link
                 href="/need"
-                className="mt-8 inline-flex items-center gap-2 text-sm font-bold tracking-wide text-accent u-link"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-bold tracking-wide text-accent-ink u-link"
               >
                 Browse needs <ArrowUpRight size={16} />
               </Link>
@@ -204,22 +204,22 @@ export default async function HomePage() {
                   <Link
                     key={r.id}
                     href={`/need/${r.slug}`}
-                    className="block border-b border-white/15 py-5 transition hover:pl-2"
+                    className="block border-b border-line py-5 transition hover:pl-2"
                   >
-                    <div className="flex justify-between text-xs font-semibold tracking-widest text-paper/50">
+                    <div className="flex justify-between text-xs font-semibold tracking-widest text-muted">
                       <span>{r.type}</span>
                       <span>{r.city ?? "Online"}</span>
                     </div>
                     <h3 className="mt-2 font-display text-2xl tracking-tight">
                       {r.title}
                     </h3>
-                    <p className="mt-1 line-clamp-2 text-sm text-paper/60">
+                    <p className="mt-1 line-clamp-2 text-sm text-muted">
                       {r.description}
                     </p>
                   </Link>
                 ))
               ) : (
-                <p className="text-paper/60">
+                <p className="text-muted">
                   Nobody has asked for anything yet. Maybe you&apos;re the
                   first.
                 </p>

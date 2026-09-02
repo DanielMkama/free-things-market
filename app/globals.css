@@ -44,19 +44,23 @@
 }
 
 @theme {
-  --color-paper: #f4f1e8;
-  --color-paper-deep: #ece7d9;
-  --color-ink: #16150f;
-  --color-ink-soft: #57534733;
-  --color-muted: #6b6559;
-  --color-line: #d9d3c4;
+  /* Dark theme — black ground, warm off-white ink, one lime accent. */
+  --color-paper: #0b0b09;
+  --color-paper-deep: #16150f;
+  --color-ink: #f4f1e8;
+  --color-ink-soft: #f4f1e833;
+  --color-muted: #9c968b;
+  --color-line: #2b2a24;
   --color-accent: #ceff1a;
-  --color-accent-ink: #5f7500;
-  --color-white: #ffffff;
+  --color-accent-ink: #d6ff4f;
+  --color-on-accent: #0b0b09;
+  --color-white: #1b1a16;
 
-  --font-display: "Halenoir", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
-  --font-sans: "Halenoir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --font-display:
+    "Halenoir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-sans:
+    "Halenoir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
 
   --breakpoint-xs: 26rem;
@@ -70,6 +74,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+  background: var(--color-paper);
 }
 
 body {
@@ -81,6 +87,11 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+}
+
+/* Anything on the lime accent gets near-black text, regardless of context. */
+.bg-accent {
+  color: var(--color-on-accent);
 }
 
 button,
@@ -139,7 +150,10 @@ select {
 .u-card {
   border: 1px solid var(--color-line);
   background: color-mix(in srgb, var(--color-white) 45%, transparent);
-  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .u-card:hover {
@@ -190,7 +204,9 @@ select {
 .u-reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: opacity, transform;
 }
 

@@ -150,7 +150,7 @@ export default async function RequestDetailPage({
               ) : (
                 <Link
                   href={`/login?next=/need/${req.slug}`}
-                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold tracking-wide text-paper hover:bg-black"
+                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold tracking-wide text-paper hover:brightness-95"
                 >
                   Log in to help
                 </Link>

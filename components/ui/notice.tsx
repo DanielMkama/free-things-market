@@ -13,7 +13,7 @@ export function Notice({
   const tones = {
     info: "border-ink bg-white/50",
     success: "border-ink bg-accent",
-    error: "border-red-700 bg-red-50 text-red-800",
+    error: "border-red-500/60 bg-red-500/10 text-red-300",
   };
   return (
     <div

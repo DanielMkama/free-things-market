@@ -30,7 +30,7 @@ function ActionButton({
     <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
       <Link
         href={href}
-        className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-7 py-3 text-sm font-bold tracking-wide text-ink shadow-[4px_4px_0_0_var(--color-ink)] transition-colors hover:brightness-105 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-ink"
+        className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-7 py-3 text-sm font-bold tracking-wide shadow-[4px_4px_0_0_var(--color-ink)] transition-colors hover:brightness-105 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-ink"
       >
         {children}
         <ArrowUpRight size={18} />
@@ -66,7 +66,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   return (
     <section
       className={cn(
-        "relative flex w-full flex-col items-center justify-center overflow-hidden bg-paper px-4 pb-[38vh] pt-16 text-center md:pb-[34vh] md:pt-24",
+        "relative flex w-full flex-col items-center justify-center overflow-hidden bg-paper px-4 pb-[38vh] pt-28 text-center md:pb-[34vh] md:pt-32",
         "min-h-[92vh]",
         className,
       )}

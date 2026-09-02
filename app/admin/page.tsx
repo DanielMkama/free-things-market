@@ -413,7 +413,7 @@ function ModTable({
                   {r.status !== "removed" && (
                     <form action={removeAction}>
                       <input type="hidden" name={idField} value={r.id} />
-                      <button className="text-xs font-bold tracking-widest text-red-700 u-link">
+                      <button className="text-xs font-bold tracking-widest text-red-400 u-link">
                         Remove
                       </button>
                     </form>

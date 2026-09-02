@@ -43,7 +43,7 @@ export function AvatarForm({
         name="avatar"
         accept="image/png,image/jpeg,image/webp,image/gif"
         required
-        className="block w-full text-sm file:mr-4 file:border file:border-ink file:bg-paper file:px-4 file:py-2 file:text-xs file:font-bold file:file:tracking-widest"
+        className="block w-full text-sm text-muted file:mr-4 file:border file:border-ink file:bg-white file:px-4 file:py-2 file:text-xs file:font-bold file:tracking-widest file:text-ink"
       />
       <SubmitButton full={false} size="md" pendingLabel="Uploading…">
         Save photo
