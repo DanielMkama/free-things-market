@@ -21,7 +21,9 @@ export async function runGiveForwardReminders(): Promise<{
 
   const { data: dueSoon } = await supabase
     .from("give_forward_commitments")
-    .select("id, commitment_text, user:users!give_forward_commitments_user_id_fkey(email)")
+    .select(
+      "id, commitment_text, user:users!give_forward_commitments_user_id_fkey(email)",
+    )
     .eq("status", "pending")
     .is("reminder_sent_at", null)
     .lte("deadline", soon);
@@ -30,7 +32,10 @@ export async function runGiveForwardReminders(): Promise<{
     const user = Array.isArray(row.user) ? row.user[0] : row.user;
     const to = (user as { email?: string } | null)?.email;
     if (!to) continue;
-    await sendMail({ to, ...emails.giveForwardReminder(String(row.commitment_text)) });
+    await sendMail({
+      to,
+      ...emails.giveForwardReminder(String(row.commitment_text)),
+    });
     await supabase
       .from("give_forward_commitments")
       .update({ reminder_sent_at: nowIso })

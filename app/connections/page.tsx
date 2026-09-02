@@ -54,7 +54,7 @@ export default async function ConnectionsPage() {
           {(c) => (
             <Link
               href={`/connections/${c.id}`}
-              className="inline-flex items-center gap-2 border border-ink px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-ink hover:text-paper"
+              className="inline-flex items-center gap-2 border border-ink px-4 py-2 text-xs font-bold tracking-widest hover:bg-ink hover:text-paper"
             >
               Mark it done
             </Link>
@@ -63,7 +63,7 @@ export default async function ConnectionsPage() {
 
         <Group title="Waiting on them" items={waiting} me={user.id}>
           {() => (
-            <span className="text-xs font-bold uppercase tracking-widest text-muted">
+            <span className="text-xs font-bold tracking-widest text-muted">
               Pending
             </span>
           )}
@@ -73,7 +73,7 @@ export default async function ConnectionsPage() {
           {(c) => (
             <Link
               href={`/connections/${c.id}`}
-              className="text-xs font-bold uppercase tracking-widest text-accent-ink u-link"
+              className="text-xs font-bold tracking-widest text-accent-ink u-link"
             >
               View act →
             </Link>
@@ -104,7 +104,7 @@ function Group({
   if (items.length === 0) return null;
   return (
     <section className={`mt-10 ${muted ? "opacity-60" : ""}`}>
-      <h2 className="text-xs font-bold uppercase tracking-widest text-muted">
+      <h2 className="text-xs font-bold tracking-widest text-muted">
         {title} · {items.length}
       </h2>
       <ul className="mt-3">
@@ -126,7 +126,7 @@ function Group({
                 />
                 <div>
                   <p className="font-semibold">
-                    {iAmGiver ? "You give · " : "You receive · "}
+                    {iAmGiver ? "You give ·" : "You receive ·"}
                     <Link href={`/u/${other.handle}`} className="u-link">
                       {other.name}
                     </Link>

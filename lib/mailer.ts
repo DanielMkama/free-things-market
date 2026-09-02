@@ -7,7 +7,8 @@ type Mail = {
   body: string; // plain text
 };
 
-const FROM = process.env.MAIL_FROM ?? "The Free Things Market <hello@freethings.market>";
+const FROM =
+  process.env.MAIL_FROM ?? "The Free Things Market <hello@freethings.market>";
 
 export async function sendMail({ to, subject, body }: Mail): Promise<void> {
   const key = process.env.RESEND_API_KEY;

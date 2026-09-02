@@ -1,17 +1,19 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import {
-  completeOnboardingAction,
-  type FormState,
-} from "@/lib/actions/auth";
+import { completeOnboardingAction, type FormState } from "@/lib/actions/auth";
 import { Field, TextArea } from "@/components/ui/field";
 import { Notice } from "@/components/ui/notice";
 import { SubmitButton } from "@/components/forms/submit";
 import { Button } from "@/components/ui/button";
 import { SHOWCASE } from "@/lib/taxonomy";
 
-const STEPS = ["Your name", "Where are you?", "What can you give?", "What do you need?"];
+const STEPS = [
+  "Your name",
+  "Where are you?",
+  "What can you give?",
+  "What do you need?",
+];
 const initial: FormState = {};
 
 export function OnboardingForm({ defaultName }: { defaultName: string }) {
@@ -25,12 +27,22 @@ export function OnboardingForm({ defaultName }: { defaultName: string }) {
     set: (v: string[]) => void,
     value: string,
   ) => {
-    set(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
+    set(
+      list.includes(value) ? list.filter((v) => v !== value) : [...list, value],
+    );
   };
 
   const last = step === STEPS.length - 1;
-  const giveChoices = [...SHOWCASE.Skills, ...SHOWCASE.Things, ...SHOWCASE.Knowledge];
-  const needChoices = [...SHOWCASE.Skills, ...SHOWCASE.Knowledge, ...SHOWCASE.Things];
+  const giveChoices = [
+    ...SHOWCASE.Skills,
+    ...SHOWCASE.Things,
+    ...SHOWCASE.Knowledge,
+  ];
+  const needChoices = [
+    ...SHOWCASE.Skills,
+    ...SHOWCASE.Knowledge,
+    ...SHOWCASE.Things,
+  ];
 
   return (
     <form action={action} className="space-y-8">
@@ -51,7 +63,7 @@ export function OnboardingForm({ defaultName }: { defaultName: string }) {
 
       {/* Step 1 */}
       <div className={step === 0 ? "space-y-4" : "hidden"}>
-        <h2 className="font-display text-4xl uppercase tracking-tight">
+        <h2 className="font-display text-4xl tracking-tight">
           What&apos;s your name?
         </h2>
         <Field label="Name" name="name" defaultValue={defaultName} required />
@@ -65,9 +77,7 @@ export function OnboardingForm({ defaultName }: { defaultName: string }) {
 
       {/* Step 2 */}
       <div className={step === 1 ? "space-y-4" : "hidden"}>
-        <h2 className="font-display text-4xl uppercase tracking-tight">
-          Where are you?
-        </h2>
+        <h2 className="font-display text-4xl tracking-tight">Where are you?</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="City" name="city" placeholder="Arusha" />
           <Field label="Country" name="country" placeholder="Tanzania" />
@@ -80,11 +90,12 @@ export function OnboardingForm({ defaultName }: { defaultName: string }) {
 
       {/* Step 3 */}
       <div className={step === 2 ? "space-y-4" : "hidden"}>
-        <h2 className="font-display text-4xl uppercase tracking-tight">
+        <h2 className="font-display text-4xl tracking-tight">
           What can you give?
         </h2>
         <p className="text-sm text-muted">
-          Pick anything that fits. You probably have more to give than you think.
+          Pick anything that fits. You probably have more to give than you
+          think.
         </p>
         <ChipGroup
           options={giveChoices}
@@ -96,7 +107,7 @@ export function OnboardingForm({ defaultName }: { defaultName: string }) {
 
       {/* Step 4 */}
       <div className={step === 3 ? "space-y-4" : "hidden"}>
-        <h2 className="font-display text-4xl uppercase tracking-tight">
+        <h2 className="font-display text-4xl tracking-tight">
           What are you looking for?
         </h2>
         <p className="text-sm text-muted">

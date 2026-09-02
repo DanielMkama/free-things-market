@@ -91,8 +91,7 @@ export async function logInAction(
     email,
     password,
   });
-  if (error || !data.user)
-    return { error: "Email or password is incorrect." };
+  if (error || !data.user) return { error: "Email or password is incorrect." };
 
   const { data: profile } = await supabase
     .from("users")

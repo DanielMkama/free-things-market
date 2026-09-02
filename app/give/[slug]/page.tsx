@@ -58,7 +58,7 @@ export default async function OfferDetailPage({
         <div>
           <Link
             href="/give"
-            className="text-xs font-bold uppercase tracking-widest text-muted u-link"
+            className="text-xs font-bold tracking-widest text-muted u-link"
           >
             ← Give board
           </Link>
@@ -89,7 +89,10 @@ export default async function OfferDetailPage({
 
           <dl className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2">
             <Detail label="Location" value={locationLabel(offer)} />
-            <Detail label="Availability" value={offer.availability ?? "Flexible"} />
+            <Detail
+              label="Availability"
+              value={offer.availability ?? "Flexible"}
+            />
             {offer.capacity ? (
               <Detail label="Capacity" value={offer.capacity} />
             ) : null}
@@ -99,7 +102,7 @@ export default async function OfferDetailPage({
           {matches.length > 0 && (
             <section className="mt-14">
               <Eyebrow>People this could help</Eyebrow>
-              <h2 className="mt-3 font-display text-2xl uppercase tracking-tight">
+              <h2 className="mt-3 font-display text-2xl tracking-tight">
                 We found people who may need this
               </h2>
               <div className="mt-5 space-y-3">
@@ -109,11 +112,11 @@ export default async function OfferDetailPage({
                     href={`/need/${r.slug}`}
                     className="u-card block p-4"
                   >
-                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-muted">
+                    <div className="flex items-center justify-between text-xs font-semibold tracking-widest text-muted">
                       <span>{r.type}</span>
                       <span>{locationLabel(r)}</span>
                     </div>
-                    <p className="mt-1 font-display text-lg uppercase tracking-tight">
+                    <p className="mt-1 font-display text-lg tracking-tight">
                       {r.title}
                     </p>
                   </Link>
@@ -150,13 +153,15 @@ export default async function OfferDetailPage({
 
             <div className="mt-6">
               {isOwner ? (
-                <Notice>This is your offer. Watch your connections for requests.</Notice>
+                <Notice>
+                  This is your offer. Watch your connections for requests.
+                </Notice>
               ) : me ? (
                 <ConnectForm kind="offer" offerId={offer.id} />
               ) : (
                 <Link
                   href={`/login?next=/give/${offer.slug}`}
-                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold uppercase tracking-wide text-paper hover:bg-black"
+                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold tracking-wide text-paper hover:bg-black"
                 >
                   Log in to connect
                 </Link>
@@ -181,9 +186,7 @@ export default async function OfferDetailPage({
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div className="bg-paper p-4">
-      <dt className="text-xs font-bold uppercase tracking-widest text-muted">
-        {label}
-      </dt>
+      <dt className="text-xs font-bold tracking-widest text-muted">{label}</dt>
       <dd className="mt-1 font-semibold">{value}</dd>
     </div>
   );

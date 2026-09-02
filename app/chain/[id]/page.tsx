@@ -28,7 +28,7 @@ export default async function ChainPage({
       <div className="mx-auto max-w-2xl">
         <Link
           href="/impact"
-          className="text-xs font-bold uppercase tracking-widest text-muted u-link"
+          className="text-xs font-bold tracking-widest text-muted u-link"
         >
           ← Community impact
         </Link>

@@ -21,7 +21,7 @@ export function ShareRow({ path }: { path: string }) {
   return (
     <button
       onClick={copy}
-      className="flex w-full items-center justify-center gap-2 border border-line bg-white/40 px-4 py-3 text-xs font-bold uppercase tracking-widest text-muted hover:border-ink hover:text-ink"
+      className="flex w-full items-center justify-center gap-2 border border-line bg-white/40 px-4 py-3 text-xs font-bold tracking-widest text-muted hover:border-ink hover:text-ink"
     >
       {copied ? (
         <>

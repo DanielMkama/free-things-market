@@ -37,11 +37,11 @@ export const AVAILABILITY = [
 export const URGENCY = ["Whenever", "This week", "This month"] as const;
 
 export const GIVE_FORWARD_TYPES = [
-  "GIVE A THING",
-  "GIVE YOUR TIME",
-  "GIVE A SKILL",
-  "HELP SOMEONE",
-  "MAKE AN INTRODUCTION",
+  "Give a thing",
+  "Give your time",
+  "Give a skill",
+  "Help someone",
+  "Make an introduction",
 ] as const;
 export type GiveForwardType = (typeof GIVE_FORWARD_TYPES)[number];
 

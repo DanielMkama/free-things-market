@@ -30,8 +30,7 @@ export type BoardFilters = {
 
 type Row = Record<string, unknown>;
 
-const AUTHOR_COLS =
-  "id,handle,name,avatar_color,avatar_url,headline,city";
+const AUTHOR_COLS = "id,handle,name,avatar_color,avatar_url,headline,city";
 
 const FALLBACK_AUTHOR: PublicAuthor = {
   id: "",
@@ -43,10 +42,11 @@ const FALLBACK_AUTHOR: PublicAuthor = {
   city: null,
 };
 
-function withAuthor<T>(row: Row, map: (r: Row) => T): T & { author: PublicAuthor } {
-  const author = row.author
-    ? mapAuthor(row.author as Row)
-    : FALLBACK_AUTHOR;
+function withAuthor<T>(
+  row: Row,
+  map: (r: Row) => T,
+): T & { author: PublicAuthor } {
+  const author = row.author ? mapAuthor(row.author as Row) : FALLBACK_AUTHOR;
   return { ...map(row), author };
 }
 
@@ -169,7 +169,9 @@ export async function matchRequestsForOffer(
   limit = 4,
 ): Promise<RequestWithAuthor[]> {
   const pool = await listRequests({});
-  const words = keywords(`${offer.title} ${offer.description} ${offer.category}`);
+  const words = keywords(
+    `${offer.title} ${offer.description} ${offer.category}`,
+  );
   return pool
     .filter((r) => r.userId !== offer.userId)
     .map((r) => {
@@ -194,9 +196,32 @@ export async function matchRequestsForOffer(
 }
 
 const STOP = new Set([
-  "the", "and", "for", "with", "you", "your", "someone", "need", "want",
-  "help", "some", "have", "this", "that", "from", "would", "like", "can",
-  "about", "into", "any", "get", "who", "one", "out", "how",
+  "the",
+  "and",
+  "for",
+  "with",
+  "you",
+  "your",
+  "someone",
+  "need",
+  "want",
+  "help",
+  "some",
+  "have",
+  "this",
+  "that",
+  "from",
+  "would",
+  "like",
+  "can",
+  "about",
+  "into",
+  "any",
+  "get",
+  "who",
+  "one",
+  "out",
+  "how",
 ]);
 
 function keywords(text: string): Set<string> {

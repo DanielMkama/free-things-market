@@ -25,7 +25,9 @@ export function BoardFilters() {
         if (!v || v === "All") sp.delete(k);
         else sp.set(k, v);
       }
-      startTransition(() => router.replace(`${pathname}?${sp.toString()}`, { scroll: false }));
+      startTransition(() =>
+        router.replace(`${pathname}?${sp.toString()}`, { scroll: false }),
+      );
     },
     [params, pathname, router],
   );
@@ -46,7 +48,7 @@ export function BoardFilters() {
           className="u-field flex-1"
           aria-label="Search"
         />
-        <button className="border border-ink px-4 text-sm font-bold uppercase tracking-wide hover:bg-ink hover:text-paper">
+        <button className="border border-ink px-4 text-sm font-bold tracking-wide hover:bg-ink hover:text-paper">
           Go
         </button>
       </form>
@@ -57,7 +59,7 @@ export function BoardFilters() {
             key={t}
             onClick={() => push({ type: t })}
             className={cn(
-              "border border-ink px-3 py-1.5 text-xs font-bold uppercase tracking-widest transition",
+              "border border-ink px-3 py-1.5 text-xs font-bold tracking-widest transition",
               current.type === t
                 ? "bg-ink text-paper"
                 : "hover:bg-ink hover:text-paper",
@@ -74,7 +76,7 @@ export function BoardFilters() {
             key={c}
             onClick={() => push({ category: c })}
             className={cn(
-              "border px-3 py-1.5 text-xs font-semibold uppercase tracking-widest transition",
+              "border px-3 py-1.5 text-xs font-semibold tracking-widest transition",
               current.category === c
                 ? "border-ink bg-accent text-ink"
                 : "border-line text-muted hover:border-ink hover:text-ink",
@@ -85,7 +87,7 @@ export function BoardFilters() {
         ))}
       </div>
 
-      <label className="flex w-fit cursor-pointer items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted">
+      <label className="flex w-fit cursor-pointer items-center gap-2 text-xs font-bold tracking-widest text-muted">
         <input
           type="checkbox"
           checked={current.online}

@@ -42,24 +42,22 @@ export default async function MarketPage() {
         </SectionHeading>
 
         <section className="mt-14">
-          <h2 className="font-display text-2xl uppercase tracking-tight">
-            Next markets
-          </h2>
+          <h2 className="font-display text-2xl tracking-tight">Next markets</h2>
           <div className="mt-4">
             {upcoming.length === 0 ? (
               <p className="border border-dashed border-line bg-white/30 p-6 text-muted">
-                No dates announced yet. Join the market online and you&apos;ll be
-                the first to know.
+                No dates announced yet. Join the market online and you&apos;ll
+                be the first to know.
               </p>
             ) : (
               <ul className="grid gap-px border border-line bg-line">
                 {upcoming.map((e) => (
                   <li key={e.id} className="bg-paper p-6">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="font-display text-xl uppercase tracking-tight">
+                      <p className="font-display text-xl tracking-tight">
                         {e.name}
                       </p>
-                      <span className="text-xs font-bold uppercase tracking-widest text-accent-ink">
+                      <span className="text-xs font-bold tracking-widest text-accent-ink">
                         {formatDate(e.date)}
                       </span>
                     </div>
@@ -75,12 +73,14 @@ export default async function MarketPage() {
         </section>
 
         <section className="mt-14">
-          <h2 className="font-display text-2xl uppercase tracking-tight">
+          <h2 className="font-display text-2xl tracking-tight">
             How the day works
           </h2>
           <ol className="mt-4 space-y-3 text-muted">
             <li>1. Scan a QR code at the door to join the market.</li>
-            <li>2. Post what you brought to give, and what you&apos;re after.</li>
+            <li>
+              2. Post what you brought to give, and what you&apos;re after.
+            </li>
             <li>3. Wander. Meet people. Exchange.</li>
             <li>4. Keep giving forward online after you leave.</li>
           </ol>
@@ -92,7 +92,7 @@ export default async function MarketPage() {
 
         <Link
           href="/signup"
-          className="mt-12 inline-flex items-center gap-2 border-2 border-ink px-6 py-4 font-bold uppercase tracking-wide hover:bg-ink hover:text-paper"
+          className="mt-12 inline-flex items-center gap-2 border-2 border-ink px-6 py-4 font-bold tracking-wide hover:bg-ink hover:text-paper"
         >
           Join the market
         </Link>

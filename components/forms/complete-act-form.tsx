@@ -25,11 +25,10 @@ export function CompleteActForm({
   if (phase === "ask") {
     return (
       <div className="border border-ink bg-white/50 p-6">
-        <p className="font-display text-3xl uppercase tracking-tight">
-          Did it happen?
-        </p>
+        <p className="font-display text-3xl tracking-tight">Did it happen?</p>
         <p className="mt-2 text-sm text-muted">
-          When you&apos;ve met, exchanged, or helped — mark it done so it counts.
+          When you&apos;ve met, exchanged, or helped — mark it done so it
+          counts.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Button variant="accent" onClick={() => setPhase("form")}>
@@ -44,10 +43,11 @@ export function CompleteActForm({
   }
 
   return (
-    <form action={action} className="space-y-4 border border-ink bg-white/60 p-6">
-      <p className="font-display text-2xl uppercase tracking-tight">
-        What happened?
-      </p>
+    <form
+      action={action}
+      className="space-y-4 border border-ink bg-white/60 p-6"
+    >
+      <p className="font-display text-2xl tracking-tight">What happened?</p>
       {state.error ? <Notice tone="error">{state.error}</Notice> : null}
       <input type="hidden" name="connectionId" value={connectionId} />
 

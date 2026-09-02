@@ -40,10 +40,18 @@ export default async function ConnectionDetailPage({
     supabase.from("users").select("*").eq("id", conn.giverId).single(),
     supabase.from("users").select("*").eq("id", conn.receiverId).single(),
     conn.offerId
-      ? supabase.from("offers").select("slug, title").eq("id", conn.offerId).maybeSingle()
+      ? supabase
+          .from("offers")
+          .select("slug, title")
+          .eq("id", conn.offerId)
+          .maybeSingle()
       : Promise.resolve({ data: null }),
     conn.requestId
-      ? supabase.from("requests").select("slug, title").eq("id", conn.requestId).maybeSingle()
+      ? supabase
+          .from("requests")
+          .select("slug, title")
+          .eq("id", conn.requestId)
+          .maybeSingle()
       : Promise.resolve({ data: null }),
     getActByConnection(conn.id),
   ]);
@@ -62,9 +70,12 @@ export default async function ConnectionDetailPage({
           .select("id, commitment_text, deadline, status")
           .eq("trigger_act_id", act.id)
           .maybeSingle()
-      ).data as
-        | { id: string; commitment_text: string; deadline: string; status: string }
-        | null)
+      ).data as {
+        id: string;
+        commitment_text: string;
+        deadline: string;
+        status: string;
+      } | null)
     : null;
 
   const thing = offer?.title ?? request?.title ?? "generosity";
@@ -74,7 +85,7 @@ export default async function ConnectionDetailPage({
       <div className="mx-auto max-w-2xl">
         <Link
           href="/connections"
-          className="text-xs font-bold uppercase tracking-widest text-muted u-link"
+          className="text-xs font-bold tracking-widest text-muted u-link"
         >
           ← All connections
         </Link>
@@ -124,11 +135,11 @@ export default async function ConnectionDetailPage({
           {conn.status === "accepted" && (
             <div className="space-y-6">
               <div className="border border-ink bg-accent p-5">
-                <p className="text-xs font-bold uppercase tracking-widest">
+                <p className="text-xs font-bold tracking-widest">
                   You&apos;re connected
                 </p>
                 <p className="mt-2 text-sm font-semibold">
-                  Reach {other.name} at{" "}
+                  Reach {other.name} at{""}
                   <a href={`mailto:${other.email}`} className="u-link">
                     {other.email}
                   </a>
@@ -149,14 +160,14 @@ export default async function ConnectionDetailPage({
             <div className="space-y-6">
               {done && (
                 <div className="border border-ink bg-accent p-6 text-center">
-                  <p className="font-display text-3xl uppercase tracking-tight">
+                  <p className="font-display text-3xl tracking-tight">
                     You just created an act of generosity ❤️
                   </p>
                 </div>
               )}
 
               <div className="border border-line bg-white/40 p-5">
-                <p className="text-xs font-bold uppercase tracking-widest text-muted">
+                <p className="text-xs font-bold tracking-widest text-muted">
                   The act · {formatDate(act.createdAt)}
                 </p>
                 <p className="mt-2 font-semibold">“{act.description}”</p>
@@ -170,7 +181,7 @@ export default async function ConnectionDetailPage({
               {iAmReceiver ? (
                 existingCommitment ? (
                   <div className="border border-ink bg-white/50 p-5">
-                    <p className="text-xs font-bold uppercase tracking-widest text-accent-ink">
+                    <p className="text-xs font-bold tracking-widest text-accent-ink">
                       Your Give Forward
                     </p>
                     <p className="mt-2 font-semibold">
@@ -183,7 +194,7 @@ export default async function ConnectionDetailPage({
                     </p>
                     <Link
                       href="/dashboard"
-                      className="mt-3 inline-block text-xs font-bold uppercase tracking-widest u-link"
+                      className="mt-3 inline-block text-xs font-bold tracking-widest u-link"
                     >
                       Track it on your dashboard →
                     </Link>

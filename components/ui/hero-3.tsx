@@ -30,7 +30,7 @@ function ActionButton({
     <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
       <Link
         href={href}
-        className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-7 py-3 text-sm font-bold uppercase tracking-wide text-ink shadow-[4px_4px_0_0_var(--color-ink)] transition-colors hover:brightness-105 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-ink"
+        className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-7 py-3 text-sm font-bold tracking-wide text-ink shadow-[4px_4px_0_0_var(--color-ink)] transition-colors hover:brightness-105 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-ink"
       >
         {children}
         <ArrowUpRight size={18} />
@@ -77,7 +77,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           initial="hidden"
           animate="show"
           variants={FADE_IN_ANIMATION_VARIANTS}
-          className="mb-6 inline-flex items-center rounded-full border border-line bg-white/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-muted backdrop-blur-sm"
+          className="mb-6 inline-flex items-center rounded-full border border-line bg-white/60 px-4 py-1.5 text-xs font-bold tracking-[0.18em] text-muted backdrop-blur-sm"
         >
           {tagline}
         </motion.div>
@@ -90,10 +90,10 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
             hidden: {},
             show: { transition: { staggerChildren: reduce ? 0 : 0.08 } },
           }}
-          className="font-display text-[clamp(3rem,11vw,8.5rem)] uppercase leading-[0.86] tracking-[-0.02em] text-ink"
+          className="font-display text-[clamp(3rem,11vw,8.5rem)] leading-[0.86] tracking-[-0.02em] text-ink"
         >
           {typeof title === "string"
-            ? title.split(" ").map((word, i) => (
+            ? title.split("").map((word, i) => (
                 <motion.span
                   key={i}
                   variants={FADE_IN_ANIMATION_VARIANTS}
@@ -128,7 +128,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           {secondaryCtaText && secondaryCtaHref ? (
             <Link
               href={secondaryCtaHref}
-              className="mt-8 inline-flex items-center gap-1.5 px-2 py-3 text-sm font-bold uppercase tracking-wide text-ink u-link"
+              className="mt-8 inline-flex items-center gap-1.5 px-2 py-3 text-sm font-bold tracking-wide text-ink u-link"
             >
               {secondaryCtaText}
               <MoveRight size={16} />
@@ -146,7 +146,11 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
               ? undefined
               : {
                   x: ["-100%", "0%"],
-                  transition: { ease: "linear", duration: 40, repeat: Infinity },
+                  transition: {
+                    ease: "linear",
+                    duration: 40,
+                    repeat: Infinity,
+                  },
                 }
           }
         >

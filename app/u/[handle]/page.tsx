@@ -71,7 +71,7 @@ export default async function ProfilePage({
               ) : null}
               {user.city ? (
                 <p className="text-sm text-muted">
-                  {[user.city, user.country].filter(Boolean).join(", ")}
+                  {[user.city, user.country].filter(Boolean).join(",")}
                 </p>
               ) : null}
             </div>
@@ -80,7 +80,7 @@ export default async function ProfilePage({
             {isMe ? (
               <Link
                 href="/settings"
-                className="border border-ink px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-ink hover:text-paper"
+                className="border border-ink px-4 py-2 text-xs font-bold tracking-widest hover:bg-ink hover:text-paper"
               >
                 Edit profile
               </Link>
@@ -96,7 +96,7 @@ export default async function ProfilePage({
 
         {/* Generosity */}
         <section className="mt-10">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-muted">
+          <h2 className="text-xs font-bold tracking-widest text-muted">
             My generosity
           </h2>
           <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -110,9 +110,7 @@ export default async function ProfilePage({
         <div className="mt-12 grid gap-10 lg:grid-cols-2">
           {/* Can give */}
           <section>
-            <h2 className="font-display text-2xl uppercase tracking-tight">
-              I can give
-            </h2>
+            <h2 className="font-display text-2xl tracking-tight">I can give</h2>
             {user.giveTags.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-2">
                 {user.giveTags.map((t) => (
@@ -124,7 +122,9 @@ export default async function ProfilePage({
             )}
             <div className="mt-5 space-y-3">
               {offers.length === 0 && (
-                <p className="text-sm text-muted">No active offers right now.</p>
+                <p className="text-sm text-muted">
+                  No active offers right now.
+                </p>
               )}
               {offers.map((o) => (
                 <Link
@@ -132,13 +132,13 @@ export default async function ProfilePage({
                   href={`/give/${o.slug}`}
                   className="u-card block p-4"
                 >
-                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
+                  <div className="flex items-center gap-2 text-xs font-semibold tracking-widest text-muted">
                     <span>{CATEGORY_EMOJI[o.category] ?? "✨"}</span>
                     <span>
                       {o.type} · {o.category}
                     </span>
                   </div>
-                  <p className="mt-1 font-display text-lg uppercase tracking-tight">
+                  <p className="mt-1 font-display text-lg tracking-tight">
                     {o.title}
                   </p>
                 </Link>
@@ -148,7 +148,7 @@ export default async function ProfilePage({
 
           {/* Public acts */}
           <section>
-            <h2 className="font-display text-2xl uppercase tracking-tight">
+            <h2 className="font-display text-2xl tracking-tight">
               Generosity, in the open
             </h2>
             <div className="mt-4">
@@ -170,7 +170,7 @@ export default async function ProfilePage({
                       <p className="mt-1 text-sm text-muted">
                         “{a.description}”
                       </p>
-                      <p className="mt-1 text-xs uppercase tracking-widest text-muted">
+                      <p className="mt-1 text-xs tracking-widest text-muted">
                         {timeAgo(a.createdAt)}
                       </p>
                     </li>

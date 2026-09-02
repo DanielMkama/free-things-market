@@ -13,9 +13,12 @@ const ALLOWED = ["image/png", "image/jpeg", "image/webp", "image/gif"];
 
 function extFor(type: string): string {
   return (
-    { "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "image/gif": "gif" }[
-      type
-    ] ?? "png"
+    {
+      "image/png": "png",
+      "image/jpeg": "jpg",
+      "image/webp": "webp",
+      "image/gif": "gif",
+    }[type] ?? "png"
   );
 }
 

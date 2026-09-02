@@ -11,10 +11,22 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  ["01 — Give", "Share something you can give: a thing, a skill, an hour, something you know, an introduction."],
-  ["02 — Connect", "Find someone who needs it. Or post what you need and let someone find you."],
-  ["03 — Receive", "Someone helps you. No money changes hands. Receiving here doesn't make you a beneficiary — it makes you a participant."],
-  ["04 — Give forward", "Pass the generosity on. Not back to the person who helped you — forward, to someone else."],
+  [
+    "01 — Give",
+    "Share something you can give: a thing, a skill, an hour, something you know, an introduction.",
+  ],
+  [
+    "02 — Connect",
+    "Find someone who needs it. Or post what you need and let someone find you.",
+  ],
+  [
+    "03 — Receive",
+    "Someone helps you. No money changes hands. Receiving here doesn't make you a beneficiary — it makes you a participant.",
+  ],
+  [
+    "04 — Give forward",
+    "Pass the generosity on. Not back to the person who helped you — forward, to someone else.",
+  ],
 ];
 
 const RULES = [
@@ -36,9 +48,9 @@ export default function AboutPage() {
             eyebrow="About the experiment"
             title="A market where money isn't the medium."
           >
-            The Free Things Market is a digital generosity platform. People offer
-            things, skills, time, knowledge and connections — and ask for what
-            they need — without money being involved.
+            The Free Things Market is a digital generosity platform. People
+            offer things, skills, time, knowledge and connections — and ask for
+            what they need — without money being involved.
           </SectionHeading>
         </div>
       </section>
@@ -49,9 +61,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-[1500px] gap-px border border-line bg-line md:grid-cols-2">
           {STEPS.map(([title, body]) => (
             <div key={title} className="bg-paper p-8">
-              <h3 className="font-display text-2xl uppercase tracking-tight">
-                {title}
-              </h3>
+              <h3 className="font-display text-2xl tracking-tight">{title}</h3>
               <p className="mt-3 text-muted">{body}</p>
             </div>
           ))}
@@ -92,17 +102,17 @@ export default function AboutPage() {
             </SectionHeading>
           </div>
           <div className="border border-ink bg-white/50 p-6">
-            <p className="font-display text-xl uppercase tracking-tight">
+            <p className="font-display text-xl tracking-tight">
               The market comes to life
             </p>
             <p className="mt-3 text-sm text-muted">
-              Every few months, people meet in person to exchange things, skills,
-              time and knowledge — without money. The physical market is the
-              real-world layer of this network.
+              Every few months, people meet in person to exchange things,
+              skills, time and knowledge — without money. The physical market is
+              the real-world layer of this network.
             </p>
             <Link
               href="/market"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide u-link"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-bold tracking-wide u-link"
             >
               See the next market <ArrowUpRight size={16} />
             </Link>
@@ -120,7 +130,7 @@ export default function AboutPage() {
           </div>
           <Link
             href="/signup"
-            className="inline-flex w-fit items-center gap-2 border-2 border-ink px-6 py-4 font-bold uppercase tracking-wide hover:bg-ink hover:text-paper"
+            className="inline-flex w-fit items-center gap-2 border-2 border-ink px-6 py-4 font-bold tracking-wide hover:bg-ink hover:text-paper"
           >
             Join the market <ArrowUpRight size={18} />
           </Link>

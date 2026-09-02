@@ -5,19 +5,17 @@ import { formatDate } from "@/lib/utils";
 export function ChainViz({ chain }: { chain: ChainView }) {
   const people: { name: string; handle: string }[] = [];
   chain.steps.forEach((s, i) => {
-    if (i === 0)
-      people.push({ name: s.giverName, handle: s.giverHandle });
-    if (s.receiverName)
-      people.push({ name: s.receiverName, handle: "" });
+    if (i === 0) people.push({ name: s.giverName, handle: s.giverHandle });
+    if (s.receiverName) people.push({ name: s.receiverName, handle: "" });
   });
 
   return (
     <div className="border border-line bg-white/40 p-6">
       <div className="mb-6 flex items-baseline justify-between gap-4">
-        <p className="font-display text-xl uppercase tracking-tight">
+        <p className="font-display text-xl tracking-tight">
           This generosity is moving
         </p>
-        <span className="text-xs font-semibold uppercase tracking-widest text-muted">
+        <span className="text-xs font-semibold tracking-widest text-muted">
           {formatDate(chain.createdAt)}
         </span>
       </div>
@@ -36,7 +34,8 @@ export function ChainViz({ chain }: { chain: ChainView }) {
                   className="font-bold u-link"
                 >
                   {step.giverName}
-                </Link>{" "}
+                </Link>
+                {""}
                 <span className="text-muted">
                   gave {step.type ? step.type.toLowerCase() : "generosity"}
                   {step.receiverName ? ` to ${step.receiverName}` : ""}
@@ -48,7 +47,7 @@ export function ChainViz({ chain }: { chain: ChainView }) {
         ))}
       </ol>
 
-      <div className="mt-2 flex gap-6 border-t border-line pt-4 text-xs font-bold uppercase tracking-widest text-muted">
+      <div className="mt-2 flex gap-6 border-t border-line pt-4 text-xs font-bold tracking-widest text-muted">
         <span>{people.length} people</span>
         <span>{chain.steps.length} acts</span>
         <span>1 ripple</span>

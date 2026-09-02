@@ -45,7 +45,11 @@ export default async function ImpactPage() {
       <section className="px-5 py-16 md:px-10">
         <div className="mx-auto max-w-[1500px]">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-            <Stat value={stats.peopleParticipating} label="People participating" accent />
+            <Stat
+              value={stats.peopleParticipating}
+              label="People participating"
+              accent
+            />
             <Stat value={stats.offers} label="Offers created" />
             <Stat value={stats.requests} label="Requests created" />
             <Stat value={stats.connectionsMade} label="Connections made" />
@@ -73,15 +77,15 @@ export default async function ImpactPage() {
             eyebrow="Generosity chains"
             title="One act can start a chain."
           >
-            When someone gives, receives, and gives forward — and the next person
-            does too — a chain forms.
+            When someone gives, receives, and gives forward — and the next
+            person does too — a chain forms.
           </SectionHeading>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {chains.length === 0 && (
               <p className="text-muted">
-                No chains yet. The first one starts when someone completes a Give
-                Forward.
+                No chains yet. The first one starts when someone completes a
+                Give Forward.
               </p>
             )}
             {chains.map((c) => (

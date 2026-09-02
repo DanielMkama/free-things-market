@@ -40,7 +40,7 @@ export default async function GiveBoardPage({
           </div>
           <Link
             href="/give/new"
-            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3 text-sm font-bold uppercase tracking-wide text-paper hover:bg-black"
+            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:bg-black"
           >
             <Plus size={16} /> Post something
           </Link>
@@ -50,7 +50,7 @@ export default async function GiveBoardPage({
           <BoardFilters />
         </div>
 
-        <p className="mt-8 text-xs font-bold uppercase tracking-widest text-muted">
+        <p className="mt-8 text-xs font-bold tracking-widest text-muted">
           {offers.length} {offers.length === 1 ? "gift" : "gifts"} on the board
         </p>
 

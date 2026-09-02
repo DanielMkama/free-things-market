@@ -37,7 +37,7 @@ export function MobileNav({ user }: { user: User | null }) {
             <Link
               key={l.href}
               href={l.href}
-              className="font-display text-4xl uppercase leading-none tracking-tight"
+              className="font-display text-4xl leading-none tracking-tight"
             >
               {l.label}
             </Link>
@@ -45,32 +45,29 @@ export function MobileNav({ user }: { user: User | null }) {
           <hr className="u-rule my-4" />
           {user ? (
             <>
-              <Link href="/dashboard" className="text-lg font-bold uppercase">
+              <Link href="/dashboard" className="text-lg font-bold">
                 Dashboard
               </Link>
-              <Link
-                href={`/u/${user.handle}`}
-                className="text-lg font-bold uppercase"
-              >
+              <Link href={`/u/${user.handle}`} className="text-lg font-bold">
                 My profile
               </Link>
               {user.role === "admin" && (
-                <Link href="/admin" className="text-lg font-bold uppercase">
+                <Link href="/admin" className="text-lg font-bold">
                   Admin
                 </Link>
               )}
               <form action={logOutAction}>
-                <button className="text-lg font-bold uppercase text-muted">
+                <button className="text-lg font-bold text-muted">
                   Log out
                 </button>
               </form>
             </>
           ) : (
             <>
-              <Link href="/login" className="text-lg font-bold uppercase">
+              <Link href="/login" className="text-lg font-bold">
                 Log in
               </Link>
-              <Link href="/signup" className="text-lg font-bold uppercase">
+              <Link href="/signup" className="text-lg font-bold">
                 Join the market
               </Link>
             </>

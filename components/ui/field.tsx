@@ -94,7 +94,11 @@ export function CheckboxRow({
 }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="flex cursor-pointer items-center gap-3 border border-line bg-white p-4">
-      <input type="checkbox" className="size-4 accent-[var(--color-accent-ink)]" {...rest} />
+      <input
+        type="checkbox"
+        className="size-4 accent-[var(--color-accent-ink)]"
+        {...rest}
+      />
       <span className="text-sm font-semibold">{label}</span>
     </label>
   );

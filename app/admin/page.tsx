@@ -20,9 +20,7 @@ import { formatDate } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Admin" };
 
-type CountQuery = ReturnType<
-  ReturnType<SupabaseClient["from"]>["select"]
->;
+type CountQuery = ReturnType<ReturnType<SupabaseClient["from"]>["select"]>;
 
 async function countRows(
   db: SupabaseClient,
@@ -85,12 +83,16 @@ export default async function AdminPage({
       .order("created_at", { ascending: false }),
     db
       .from("offers")
-      .select("id, slug, title, category, status, hidden_by_admin, author:users!offers_user_id_fkey(name)")
+      .select(
+        "id, slug, title, category, status, hidden_by_admin, author:users!offers_user_id_fkey(name)",
+      )
       .order("created_at", { ascending: false })
       .limit(15),
     db
       .from("requests")
-      .select("id, slug, title, category, status, hidden_by_admin, author:users!requests_user_id_fkey(name)")
+      .select(
+        "id, slug, title, category, status, hidden_by_admin, author:users!requests_user_id_fkey(name)",
+      )
       .order("created_at", { ascending: false })
       .limit(15),
     db
@@ -122,7 +124,10 @@ export default async function AdminPage({
   const recentRequests = (recentRequestsRes.data ?? []).map((r) =>
     flatAuthor(r as Record<string, unknown>),
   ) as Record<string, string | number>[];
-  const userRows = (userRowsRes.data ?? []) as Record<string, string | number>[];
+  const userRows = (userRowsRes.data ?? []) as Record<
+    string,
+    string | number
+  >[];
 
   const catCounts = new Map<string, number>();
   for (const row of offersForCatRes.data ?? []) {
@@ -144,7 +149,7 @@ export default async function AdminPage({
             <h1 className="mt-3 u-headline">The control room.</h1>
           </div>
           <form action={adminRunReminders}>
-            <button className="border border-ink px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-ink hover:text-paper">
+            <button className="border border-ink px-4 py-2 text-xs font-bold tracking-widest hover:bg-ink hover:text-paper">
               Run give-forward reminders
             </button>
           </form>
@@ -191,7 +196,7 @@ export default async function AdminPage({
         </Section>
 
         <div className="mt-6 border border-line bg-white/40 p-5">
-          <p className="text-xs font-bold uppercase tracking-widest text-muted">
+          <p className="text-xs font-bold tracking-widest text-muted">
             Offers by category
           </p>
           <div className="mt-3 flex flex-wrap gap-3 text-sm">
@@ -207,7 +212,7 @@ export default async function AdminPage({
         </div>
 
         {/* Moderation: reports */}
-        <h2 className="mt-14 font-display text-2xl uppercase tracking-tight">
+        <h2 className="mt-14 font-display text-2xl tracking-tight">
           Open reports
         </h2>
         {openReports.length === 0 ? (
@@ -216,7 +221,7 @@ export default async function AdminPage({
           <ul className="mt-4 space-y-3">
             {openReports.map((r) => (
               <li key={r.id} className="border border-ink bg-white/50 p-4">
-                <div className="flex flex-wrap justify-between gap-2 text-xs font-bold uppercase tracking-widest text-muted">
+                <div className="flex flex-wrap justify-between gap-2 text-xs font-bold tracking-widest text-muted">
                   <span>
                     {r.content_type} · {r.reason}
                   </span>
@@ -224,9 +229,7 @@ export default async function AdminPage({
                     by {r.reporter_name} · {formatDate(String(r.created_at))}
                   </span>
                 </div>
-                {r.detail ? (
-                  <p className="mt-2 text-sm">“{r.detail}”</p>
-                ) : null}
+                {r.detail ? <p className="mt-2 text-sm">“{r.detail}”</p> : null}
                 <p className="mt-2 text-xs text-muted">
                   Content id: {r.content_id}
                 </p>
@@ -234,14 +237,14 @@ export default async function AdminPage({
                   <form action={adminResolveReport}>
                     <input type="hidden" name="reportId" value={r.id} />
                     <input type="hidden" name="status" value="reviewed" />
-                    <button className="border border-ink px-3 py-1.5 text-xs font-bold uppercase tracking-widest hover:bg-ink hover:text-paper">
+                    <button className="border border-ink px-3 py-1.5 text-xs font-bold tracking-widest hover:bg-ink hover:text-paper">
                       Mark reviewed
                     </button>
                   </form>
                   <form action={adminResolveReport}>
                     <input type="hidden" name="reportId" value={r.id} />
                     <input type="hidden" name="status" value="dismissed" />
-                    <button className="px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-muted u-link">
+                    <button className="px-3 py-1.5 text-xs font-bold tracking-widest text-muted u-link">
                       Dismiss
                     </button>
                   </form>
@@ -252,7 +255,7 @@ export default async function AdminPage({
         )}
 
         {/* Offers table */}
-        <h2 className="mt-14 font-display text-2xl uppercase tracking-tight">
+        <h2 className="mt-14 font-display text-2xl tracking-tight">
           Recent offers
         </h2>
         <ModTable
@@ -264,7 +267,7 @@ export default async function AdminPage({
         />
 
         {/* Requests table */}
-        <h2 className="mt-14 font-display text-2xl uppercase tracking-tight">
+        <h2 className="mt-14 font-display text-2xl tracking-tight">
           Recent requests
         </h2>
         <ModTable
@@ -276,13 +279,11 @@ export default async function AdminPage({
         />
 
         {/* Users table */}
-        <h2 className="mt-14 font-display text-2xl uppercase tracking-tight">
-          Users
-        </h2>
+        <h2 className="mt-14 font-display text-2xl tracking-tight">Users</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-sm">
             <thead>
-              <tr className="border-b border-ink text-left text-xs uppercase tracking-widest text-muted">
+              <tr className="border-b border-ink text-left text-xs tracking-widest text-muted">
                 <th className="py-2 pr-4">Name</th>
                 <th className="py-2 pr-4">Email</th>
                 <th className="py-2 pr-4">Role</th>
@@ -295,7 +296,10 @@ export default async function AdminPage({
               {userRows.map((u) => (
                 <tr key={u.id} className="border-b border-line">
                   <td className="py-2 pr-4">
-                    <Link href={`/u/${u.handle}`} className="u-link font-semibold">
+                    <Link
+                      href={`/u/${u.handle}`}
+                      className="u-link font-semibold"
+                    >
                       {u.name}
                     </Link>
                   </td>
@@ -316,7 +320,7 @@ export default async function AdminPage({
                           name="suspended"
                           value={u.suspended ? "0" : "1"}
                         />
-                        <button className="text-xs font-bold uppercase tracking-widest u-link">
+                        <button className="text-xs font-bold tracking-widest u-link">
                           {u.suspended ? "Unsuspend" : "Suspend"}
                         </button>
                       </form>
@@ -341,10 +345,10 @@ function Section({
 }) {
   return (
     <section className="mt-10">
-      <h2 className="text-xs font-bold uppercase tracking-widest text-muted">
-        {title}
-      </h2>
-      <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">{children}</div>
+      <h2 className="text-xs font-bold tracking-widest text-muted">{title}</h2>
+      <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {children}
+      </div>
     </section>
   );
 }
@@ -368,7 +372,7 @@ function ModTable({
     <div className="mt-4 overflow-x-auto">
       <table className="w-full min-w-[680px] border-collapse text-sm">
         <thead>
-          <tr className="border-b border-ink text-left text-xs uppercase tracking-widest text-muted">
+          <tr className="border-b border-ink text-left text-xs tracking-widest text-muted">
             <th className="py-2 pr-4">Title</th>
             <th className="py-2 pr-4">Author</th>
             <th className="py-2 pr-4">Category</th>
@@ -380,7 +384,10 @@ function ModTable({
           {rows.map((r) => (
             <tr key={r.id} className="border-b border-line">
               <td className="py-2 pr-4">
-                <Link href={`${base}/${r.slug}`} className="u-link font-semibold">
+                <Link
+                  href={`${base}/${r.slug}`}
+                  className="u-link font-semibold"
+                >
                   {r.title}
                 </Link>
               </td>
@@ -399,14 +406,14 @@ function ModTable({
                       name="hidden"
                       value={r.hidden_by_admin ? "0" : "1"}
                     />
-                    <button className="text-xs font-bold uppercase tracking-widest u-link">
+                    <button className="text-xs font-bold tracking-widest u-link">
                       {r.hidden_by_admin ? "Unhide" : "Hide"}
                     </button>
                   </form>
                   {r.status !== "removed" && (
                     <form action={removeAction}>
                       <input type="hidden" name={idField} value={r.id} />
-                      <button className="text-xs font-bold uppercase tracking-widest text-red-700 u-link">
+                      <button className="text-xs font-bold tracking-widest text-red-700 u-link">
                         Remove
                       </button>
                     </form>

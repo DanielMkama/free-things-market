@@ -1,29 +1,16 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { getCurrentUser } from "@/lib/auth";
 
-const anton = Anton({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-anton",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-const SITE_URL = rawSiteUrl && rawSiteUrl !== "" 
-  ? rawSiteUrl 
-  : process.env.VERCEL_URL 
-  ? `https://${process.env.VERCEL_URL}` 
-  : "http://localhost:3000";
+const SITE_URL =
+  rawSiteUrl && rawSiteUrl !== ""
+    ? rawSiteUrl
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -49,7 +36,7 @@ export default async function RootLayout({
   const user = await getCurrentUser();
 
   return (
-    <html lang="en" className={`${anton.variable} ${inter.variable}`}>
+    <html lang="en">
       <body className="flex min-h-screen flex-col">
         <SiteNav user={user} />
         <div className="flex-1">{children}</div>

@@ -6,12 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { requireOnboardedUser } from "@/lib/auth";
 import { track } from "@/lib/analytics";
 import { slugify, randomSuffix } from "@/lib/utils";
-import {
-  OFFER_TYPES,
-  CATEGORIES,
-  AVAILABILITY,
-  URGENCY,
-} from "@/lib/taxonomy";
+import { OFFER_TYPES, CATEGORIES, AVAILABILITY, URGENCY } from "@/lib/taxonomy";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { FormState } from "@/lib/form-state";
 
@@ -114,7 +109,9 @@ export async function createRequestAction(
   if (!city && !onlineAvailable)
     return { error: "Add a location, or mark it as fine online." };
 
-  const urgency = URGENCY.includes(urgencyRaw as never) ? urgencyRaw : "Whenever";
+  const urgency = URGENCY.includes(urgencyRaw as never)
+    ? urgencyRaw
+    : "Whenever";
 
   const supabase = await createClient();
   const slug = await uniqueSlug(supabase, "requests", title);

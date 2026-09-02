@@ -38,9 +38,10 @@ export function parseTags(value: unknown): string[] {
 
 /** Normalised tag list ready to store in a jsonb column. */
 export function serializeTags(tags: string[]): string[] {
-  return Array.from(
-    new Set(tags.map((t) => t.trim()).filter(Boolean)),
-  ).slice(0, 12);
+  return Array.from(new Set(tags.map((t) => t.trim()).filter(Boolean))).slice(
+    0,
+    12,
+  );
 }
 
 const RELATIVE = new Intl.RelativeTimeFormat("en", { numeric: "auto" });

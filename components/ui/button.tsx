@@ -6,7 +6,7 @@ type Variant = "solid" | "outline" | "accent" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wide transition disabled:pointer-events-none disabled:opacity-50 select-none";
+  "inline-flex items-center justify-center gap-2 font-bold tracking-wide transition disabled:pointer-events-none disabled:opacity-50 select-none";
 
 const variants: Record<Variant, string> = {
   solid: "bg-ink text-paper hover:-translate-y-0.5 hover:bg-black",

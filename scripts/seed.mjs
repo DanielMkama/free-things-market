@@ -541,7 +541,7 @@ const actB = await act({
 await commitment({
   user: amina,
   trigger: actA,
-  type: "GIVE A SKILL",
+  type: "Give a skill",
   text: "I'll give someone a free photography session.",
   deadline: inDays(-8),
   status: "completed",
@@ -585,7 +585,7 @@ const actC = await act({
 await commitment({
   user: john,
   trigger: actB,
-  type: "GIVE A SKILL",
+  type: "Give a skill",
   text: "I'll help someone rewrite their website copy.",
   deadline: inDays(-3),
   status: "completed",
@@ -602,7 +602,7 @@ await must(
 await commitment({
   user: kelvin,
   trigger: actC,
-  type: "HELP SOMEONE",
+  type: "Help someone",
   text: "I'll teach a beginner the basics of HTML and CSS.",
   deadline: inDays(1),
   status: "pending",
@@ -620,7 +620,7 @@ const actGrace = await act({
 await commitment({
   user: lucy,
   trigger: actGrace,
-  type: "GIVE YOUR TIME",
+  type: "Give your time",
   text: "I'll tutor a student in maths for an afternoon.",
   deadline: inDays(6),
   status: "pending",

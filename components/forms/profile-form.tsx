@@ -31,7 +31,11 @@ export function ProfileForm({ user }: { user: User }) {
       />
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="City" name="city" defaultValue={user.city ?? ""} />
-        <Field label="Country" name="country" defaultValue={user.country ?? ""} />
+        <Field
+          label="Country"
+          name="country"
+          defaultValue={user.country ?? ""}
+        />
       </div>
       <Field
         label="What I can give"

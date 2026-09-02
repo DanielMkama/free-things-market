@@ -31,7 +31,7 @@ export default function GuidelinesPage() {
         </SectionHeading>
 
         <section className="mt-14">
-          <h2 className="font-display text-2xl uppercase tracking-tight">
+          <h2 className="font-display text-2xl tracking-tight">
             What&apos;s not allowed
           </h2>
           <ul className="mt-4 grid gap-px border border-line bg-line sm:grid-cols-2">
@@ -42,21 +42,20 @@ export default function GuidelinesPage() {
             ))}
           </ul>
           <p className="mt-4 text-sm text-muted">
-            See something that breaks these rules? Use the{" "}
+            See something that breaks these rules? Use the{""}
             <strong>Report</strong> link on any offer, request or profile. The
             team reviews every report.
           </p>
         </section>
 
         <section id="safety" className="mt-14 scroll-mt-24">
-          <h2 className="font-display text-2xl uppercase tracking-tight">
+          <h2 className="font-display text-2xl tracking-tight">
             Meeting safely
           </h2>
           <div className="mt-4 space-y-3 text-muted">
             <p>
-              <strong className="text-ink">
-                Meet in safe public places
-              </strong>{" "}
+              <strong className="text-ink">Meet in safe public places</strong>
+              {""}
               when meeting someone you don&apos;t know — a café, a library, a
               busy street.
             </p>
@@ -66,14 +65,14 @@ export default function GuidelinesPage() {
               away — no explanation owed.
             </p>
             <p>
-              Keep the first conversation on the platform or over email until you
-              feel comfortable.
+              Keep the first conversation on the platform or over email until
+              you feel comfortable.
             </p>
           </div>
         </section>
 
         <section className="mt-14">
-          <h2 className="font-display text-2xl uppercase tracking-tight">
+          <h2 className="font-display text-2xl tracking-tight">
             The spirit of it
           </h2>
           <p className="mt-4 text-muted">

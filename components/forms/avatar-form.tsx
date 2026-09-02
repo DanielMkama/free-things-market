@@ -21,12 +21,17 @@ export function AvatarForm({
   const [state, action] = useActionState(updateAvatarAction, initial);
 
   return (
-    <form action={action} className="space-y-4 border border-line bg-white/40 p-5">
+    <form
+      action={action}
+      className="space-y-4 border border-line bg-white/40 p-5"
+    >
       <div className="flex items-center gap-4">
         <Avatar name={name} color={color} url={url} size={56} />
         <div>
           <p className="u-eyebrow">Profile photo</p>
-          <p className="text-sm text-muted">PNG, JPG, WebP or GIF · up to 4 MB</p>
+          <p className="text-sm text-muted">
+            PNG, JPG, WebP or GIF · up to 4 MB
+          </p>
         </div>
       </div>
 
@@ -38,7 +43,7 @@ export function AvatarForm({
         name="avatar"
         accept="image/png,image/jpeg,image/webp,image/gif"
         required
-        className="block w-full text-sm file:mr-4 file:border file:border-ink file:bg-paper file:px-4 file:py-2 file:text-xs file:font-bold file:uppercase file:tracking-widest"
+        className="block w-full text-sm file:mr-4 file:border file:border-ink file:bg-paper file:px-4 file:py-2 file:text-xs file:font-bold file:file:tracking-widest"
       />
       <SubmitButton full={false} size="md" pendingLabel="Uploading…">
         Save photo

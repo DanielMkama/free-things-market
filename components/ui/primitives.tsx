@@ -53,7 +53,7 @@ export function Stat({
       <div className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.8]">
         {value}
       </div>
-      <div className="mt-3 text-xs font-bold uppercase tracking-widest text-muted">
+      <div className="mt-3 text-xs font-bold tracking-widest text-muted">
         {label}
       </div>
     </div>
@@ -74,7 +74,7 @@ export function Avatar({
   className?: string;
 }) {
   const shared = cn(
-    "inline-flex shrink-0 items-center justify-center overflow-hidden border border-ink font-display uppercase leading-none",
+    "inline-flex shrink-0 items-center justify-center overflow-hidden border border-ink font-display leading-none",
     className,
   );
 
@@ -123,7 +123,7 @@ export function Tag({
   return (
     <span
       className={cn(
-        "inline-flex items-center border px-2 py-1 text-[0.65rem] font-bold uppercase tracking-widest",
+        "inline-flex items-center border px-2 py-1 text-[0.65rem] font-bold tracking-widest",
         tones[tone],
       )}
     >
@@ -143,7 +143,7 @@ export function EmptyState({
 }) {
   return (
     <div className="border border-dashed border-line bg-white/30 px-6 py-16 text-center">
-      <p className="font-display text-3xl uppercase tracking-tight md:text-4xl">
+      <p className="font-display text-3xl tracking-tight md:text-4xl">
         {title}
       </p>
       {children ? (
@@ -152,7 +152,7 @@ export function EmptyState({
       {action ? (
         <Link
           href={action.href}
-          className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-bold uppercase tracking-wide text-paper hover:bg-black"
+          className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:bg-black"
         >
           {action.label}
         </Link>
@@ -171,7 +171,7 @@ export function Flow({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-lg uppercase tracking-tight md:text-2xl",
+        "flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-lg tracking-tight md:text-2xl",
         className,
       )}
     >

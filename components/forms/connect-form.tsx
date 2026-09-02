@@ -46,7 +46,10 @@ export function ConnectForm({
   }
 
   return (
-    <form action={action} className="space-y-3 border border-ink bg-white/60 p-4">
+    <form
+      action={action}
+      className="space-y-3 border border-ink bg-white/60 p-4"
+    >
       {state.error ? <Notice tone="error">{state.error}</Notice> : null}
       {offerId ? <input type="hidden" name="offerId" value={offerId} /> : null}
       {requestId ? (

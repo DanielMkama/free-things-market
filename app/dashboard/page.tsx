@@ -69,7 +69,7 @@ export default async function DashboardPage({
       <div className="mx-auto max-w-[1200px]">
         <div className="border-b border-line pb-8">
           <Eyebrow>Your generosity</Eyebrow>
-          <h1 className="mt-3 u-headline">Hello, {user.name.split(" ")[0]}.</h1>
+          <h1 className="mt-3 u-headline">Hello, {user.name.split("")[0]}.</h1>
         </div>
 
         {committed && (
@@ -81,7 +81,9 @@ export default async function DashboardPage({
         )}
         {rippled && (
           <div className="mt-6">
-            <Notice tone="success">That&apos;s another ripple. Thank you.</Notice>
+            <Notice tone="success">
+              That&apos;s another ripple. Thank you.
+            </Notice>
           </div>
         )}
 
@@ -90,12 +92,16 @@ export default async function DashboardPage({
             <Notice>
               {pendingForMe > 0 && (
                 <>
-                  {pendingForMe} connection {pendingForMe === 1 ? "request" : "requests"} waiting for you.{" "}
+                  {pendingForMe} connection{" "}
+                  {pendingForMe === 1 ? "request" : "requests"} waiting for you.
+                  {""}
                 </>
               )}
               {toComplete > 0 && (
                 <>
-                  {toComplete} {toComplete === 1 ? "connection is" : "connections are"} ready to mark done.{" "}
+                  {toComplete}{" "}
+                  {toComplete === 1 ? "connection is" : "connections are"} ready
+                  to mark done.{""}
                 </>
               )}
               <Link href="/connections" className="font-bold u-link">
@@ -116,7 +122,7 @@ export default async function DashboardPage({
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           {/* Give forward */}
           <section>
-            <h2 className="font-display text-2xl uppercase tracking-tight">
+            <h2 className="font-display text-2xl tracking-tight">
               Give Forward
             </h2>
             <div className="mt-4 space-y-3">
@@ -128,7 +134,7 @@ export default async function DashboardPage({
               )}
               {openCommitments.map((c) => (
                 <div key={c.id} className="border border-ink bg-accent p-5">
-                  <p className="text-xs font-bold uppercase tracking-widest">
+                  <p className="text-xs font-bold tracking-widest">
                     {c.type} · due {formatDate(c.deadline)}
                   </p>
                   <p className="mt-2 font-semibold">“{c.commitmentText}”</p>
@@ -146,7 +152,7 @@ export default async function DashboardPage({
                     className="border border-line bg-white/40 p-4 text-sm"
                   >
                     <span
-                      className={`text-xs font-bold uppercase tracking-widest ${
+                      className={`text-xs font-bold tracking-widest ${
                         c.status === "completed"
                           ? "text-accent-ink"
                           : "text-muted"
@@ -162,7 +168,7 @@ export default async function DashboardPage({
 
           {/* Recent activity */}
           <section>
-            <h2 className="font-display text-2xl uppercase tracking-tight">
+            <h2 className="font-display text-2xl tracking-tight">
               Recent activity
             </h2>
             <div className="mt-4">
@@ -181,8 +187,10 @@ export default async function DashboardPage({
                         {a.giverId === user.id ? "You gave" : "You received"}
                         {a.type ? ` ${a.type.toLowerCase()}` : " generosity"}
                       </p>
-                      <p className="mt-1 text-sm text-muted">“{a.description}”</p>
-                      <p className="mt-1 text-xs uppercase tracking-widest text-muted">
+                      <p className="mt-1 text-sm text-muted">
+                        “{a.description}”
+                      </p>
+                      <p className="mt-1 text-xs tracking-widest text-muted">
                         {timeAgo(a.createdAt)}
                       </p>
                     </li>
@@ -245,8 +253,8 @@ function MyPosts({
   return (
     <section>
       <div className="flex items-center justify-between">
-        <h2 className="font-display text-2xl uppercase tracking-tight">{title}</h2>
-        <Link href={href} className="text-xs font-bold uppercase tracking-widest u-link">
+        <h2 className="font-display text-2xl tracking-tight">{title}</h2>
+        <Link href={href} className="text-xs font-bold tracking-widest u-link">
           {cta} +
         </Link>
       </div>
@@ -264,7 +272,7 @@ function MyPosts({
             <Link href={`${i.base}/${i.slug}`} className="font-semibold u-link">
               {i.title}
             </Link>
-            <span className="text-xs font-bold uppercase tracking-widest text-muted">
+            <span className="text-xs font-bold tracking-widest text-muted">
               {i.status}
             </span>
           </li>

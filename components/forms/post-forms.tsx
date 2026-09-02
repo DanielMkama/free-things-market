@@ -9,12 +9,7 @@ import {
 import { Field, TextArea, Select, CheckboxRow } from "@/components/ui/field";
 import { Notice } from "@/components/ui/notice";
 import { SubmitButton } from "@/components/forms/submit";
-import {
-  OFFER_TYPES,
-  CATEGORIES,
-  AVAILABILITY,
-  URGENCY,
-} from "@/lib/taxonomy";
+import { OFFER_TYPES, CATEGORIES, AVAILABILITY, URGENCY } from "@/lib/taxonomy";
 
 const initial: FormState = {};
 

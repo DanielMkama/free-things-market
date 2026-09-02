@@ -60,7 +60,7 @@ export default async function RequestDetailPage({
         <div>
           <Link
             href="/need"
-            className="text-xs font-bold uppercase tracking-widest text-muted u-link"
+            className="text-xs font-bold tracking-widest text-muted u-link"
           >
             ← Need board
           </Link>
@@ -104,7 +104,7 @@ export default async function RequestDetailPage({
           {matches.length > 0 && (
             <section className="mt-14">
               <Eyebrow>Possible matches</Eyebrow>
-              <h2 className="mt-3 font-display text-2xl uppercase tracking-tight">
+              <h2 className="mt-3 font-display text-2xl tracking-tight">
                 We found people who may help
               </h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -150,7 +150,7 @@ export default async function RequestDetailPage({
               ) : (
                 <Link
                   href={`/login?next=/need/${req.slug}`}
-                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold uppercase tracking-wide text-paper hover:bg-black"
+                  className="block w-full bg-ink px-5 py-4 text-center text-sm font-bold tracking-wide text-paper hover:bg-black"
                 >
                   Log in to help
                 </Link>
@@ -174,9 +174,7 @@ export default async function RequestDetailPage({
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div className="bg-paper p-4">
-      <dt className="text-xs font-bold uppercase tracking-widest text-muted">
-        {label}
-      </dt>
+      <dt className="text-xs font-bold tracking-widest text-muted">{label}</dt>
       <dd className="mt-1 font-semibold">{value}</dd>
     </div>
   );

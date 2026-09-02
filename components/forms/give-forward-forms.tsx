@@ -23,7 +23,7 @@ export function CreateGiveForwardForm({
 
   return (
     <form action={action} className="space-y-4 border border-ink bg-accent p-6">
-      <p className="font-display text-3xl uppercase leading-none tracking-tight">
+      <p className="font-display text-3xl leading-none tracking-tight">
         Keep it moving.
       </p>
       <p className="text-sm font-semibold">
@@ -38,7 +38,7 @@ export function CreateGiveForwardForm({
         {GIVE_FORWARD_TYPES.map((t) => (
           <label
             key={t}
-            className={`cursor-pointer border px-3 py-1.5 text-xs font-bold uppercase tracking-widest transition ${
+            className={`cursor-pointer border px-3 py-1.5 text-xs font-bold tracking-widest transition ${
               type === t
                 ? "border-ink bg-ink text-paper"
                 : "border-ink bg-white/50 hover:bg-white"
@@ -74,7 +74,12 @@ export function CreateGiveForwardForm({
         <label className="u-eyebrow" htmlFor="gf-days">
           By when?
         </label>
-        <select id="gf-days" name="days" defaultValue="7" className="u-field mt-2">
+        <select
+          id="gf-days"
+          name="days"
+          defaultValue="7"
+          className="u-field mt-2"
+        >
           <option value="3">In 3 days</option>
           <option value="7">In 7 days</option>
           <option value="14">In 2 weeks</option>
@@ -106,7 +111,10 @@ export function CompleteGiveForwardForm({
   }
 
   return (
-    <form action={action} className="mt-3 space-y-3 border border-ink bg-white/60 p-4">
+    <form
+      action={action}
+      className="mt-3 space-y-3 border border-ink bg-white/60 p-4"
+    >
       {state.error ? <Notice tone="error">{state.error}</Notice> : null}
       <input type="hidden" name="commitmentId" value={commitmentId} />
       <div>

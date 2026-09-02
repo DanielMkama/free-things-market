@@ -11,7 +11,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-paper-deep">
       <div className="mx-auto max-w-[1500px] px-5 py-16 md:px-10">
-        <p className="font-display text-[clamp(2.5rem,8vw,6rem)] uppercase leading-[0.85] tracking-tight">
+        <p className="font-display text-[clamp(2.5rem,8vw,6rem)] leading-[0.85] tracking-tight">
           Keep it
           <br />
           moving<span className="text-accent-ink">.</span>

@@ -87,7 +87,8 @@ export async function requestConnectionAction(
 
   const responderId = me.id === giverId ? receiverId : giverId;
   const to = await userEmail(responderId);
-  if (to) await sendMail({ to, ...emails.connectionRequest(me.name, subjectThing) });
+  if (to)
+    await sendMail({ to, ...emails.connectionRequest(me.name, subjectThing) });
 
   await track("connection_requested", { userId: me.id });
   revalidatePath("/connections");
@@ -179,7 +180,8 @@ export async function completeConnectionAction(
     })
     .select("id")
     .single();
-  if (actErr || !act) return { error: actErr?.message ?? "Could not record the act." };
+  if (actErr || !act)
+    return { error: actErr?.message ?? "Could not record the act." };
 
   await admin
     .from("connections")
@@ -242,7 +244,10 @@ export async function createGiveForwardAction(
   const triggerActId = String(formData.get("triggerActId") ?? "") || null;
   const type = String(formData.get("type") ?? "");
   const commitmentText = String(formData.get("commitmentText") ?? "").trim();
-  const days = Math.min(60, Math.max(1, Number(formData.get("days") ?? 7) || 7));
+  const days = Math.min(
+    60,
+    Math.max(1, Number(formData.get("days") ?? 7) || 7),
+  );
 
   if (!GIVE_FORWARD_TYPES.includes(type as never))
     return { error: "Pick how you'll give forward." };
@@ -313,11 +318,11 @@ export async function completeGiveForwardAction(
 
   const hours = hoursRaw ? Math.max(0, Number(hoursRaw)) || null : null;
   const typeMap: Record<string, string> = {
-    "GIVE A THING": "Thing",
-    "GIVE YOUR TIME": "Time",
-    "GIVE A SKILL": "Skill",
-    "HELP SOMEONE": "Knowledge",
-    "MAKE AN INTRODUCTION": "Connection",
+    "Give a thing": "Thing",
+    "Give your time": "Time",
+    "Give a skill": "Skill",
+    "Help someone": "Knowledge",
+    "Make an introduction": "Connection",
   };
 
   const { data: act, error: actErr } = await supabase
@@ -333,7 +338,8 @@ export async function completeGiveForwardAction(
     })
     .select("id")
     .single();
-  if (actErr || !act) return { error: actErr?.message ?? "Could not record it." };
+  if (actErr || !act)
+    return { error: actErr?.message ?? "Could not record it." };
 
   await supabase
     .from("give_forward_commitments")

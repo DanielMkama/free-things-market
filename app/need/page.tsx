@@ -40,7 +40,7 @@ export default async function NeedBoardPage({
           </div>
           <Link
             href="/need/new"
-            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3 text-sm font-bold uppercase tracking-wide text-paper hover:bg-black"
+            className="inline-flex w-fit items-center gap-2 bg-ink px-5 py-3 text-sm font-bold tracking-wide text-paper hover:bg-black"
           >
             <Plus size={16} /> Post a need
           </Link>
@@ -50,8 +50,9 @@ export default async function NeedBoardPage({
           <BoardFilters />
         </div>
 
-        <p className="mt-8 text-xs font-bold uppercase tracking-widest text-muted">
-          {requests.length} {requests.length === 1 ? "request" : "requests"} open
+        <p className="mt-8 text-xs font-bold tracking-widest text-muted">
+          {requests.length} {requests.length === 1 ? "request" : "requests"}{" "}
+          open
         </p>
 
         <div className="mt-2">

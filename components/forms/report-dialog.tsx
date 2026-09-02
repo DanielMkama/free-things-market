@@ -2,10 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { Flag } from "lucide-react";
-import {
-  reportContentAction,
-  type FormState,
-} from "@/lib/actions/moderation";
+import { reportContentAction, type FormState } from "@/lib/actions/moderation";
 import { REPORT_REASONS } from "@/lib/taxonomy";
 import { Notice } from "@/components/ui/notice";
 import { SubmitButton } from "@/components/forms/submit";
@@ -27,7 +24,7 @@ export function ReportDialog({
     <div>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-muted u-link"
+        className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-muted u-link"
       >
         <Flag size={13} /> Report
       </button>
