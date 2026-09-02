@@ -2,13 +2,25 @@ import Link from "next/link";
 import { ArrowUpRight, MoveRight } from "lucide-react";
 import { getImpactStats } from "@/lib/stats";
 import { listOffers, listRequests } from "@/lib/queries";
-import { Marquee } from "@/components/ui/marquee";
+import { AnimatedMarqueeHero } from "@/components/ui/hero-3";
 import { Reveal } from "@/components/ui/reveal";
 import { Stat, SectionHeading, Flow, EmptyState } from "@/components/ui/primitives";
 import { OfferCard, RequestRow } from "@/components/offer-card";
 import { SHOWCASE } from "@/lib/taxonomy";
 
 export const dynamic = "force-dynamic";
+
+// Community-flavoured Unsplash photos for the hero marquee.
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&auto=format&fit=crop&q=60", // hands / people
+  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=900&auto=format&fit=crop&q=60", // books
+  "https://images.unsplash.com/photo-1556910633-5099dc3971e8?w=900&auto=format&fit=crop&q=60", // plant cutting
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&auto=format&fit=crop&q=60", // people collaborating
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&auto=format&fit=crop&q=60", // group at table
+  "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=900&auto=format&fit=crop&q=60", // vegetables / food
+  "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=900&auto=format&fit=crop&q=60", // tools
+  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900&auto=format&fit=crop&q=60", // workshop / teaching
+];
 
 const HOW = [
   ["01", "Give", "Share something you can give — a thing, a skill, an hour, what you know."],
@@ -37,62 +49,23 @@ export default async function HomePage() {
 
   return (
     <main>
-      {/* Hero */}
-      <section className="border-b border-line px-5 pb-10 pt-10 md:px-10 md:pb-16 md:pt-14">
-        <div className="mx-auto flex max-w-[1500px] flex-col gap-14">
-          <div className="flex items-center justify-between">
-            <span className="u-eyebrow text-muted">A generosity experiment</span>
-            <span className="hidden text-xs font-bold uppercase tracking-widest text-muted md:block">
-              Give → Connect → Receive → Give forward
-            </span>
-          </div>
-
-          <h1 className="u-display">
-            Nothing
+      {/* Hero — animated marquee */}
+      <AnimatedMarqueeHero
+        className="border-b border-line"
+        tagline="A generosity experiment"
+        title={
+          <>
+            Nothing for sale.
             <br />
-            for sale.
-            <br />
-            <span className="text-accent-ink">Everything</span>
-            <br />
-            to give.
-          </h1>
-
-          <div className="flex flex-col gap-8 border-t border-line pt-8 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-xl u-lead">
-              A place to give what you have, ask for what you need, and keep
-              generosity moving. No prices. No payments. Just people sharing.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/give/new"
-                className="inline-flex items-center gap-2 bg-ink px-5 py-4 text-sm font-bold uppercase tracking-wide text-paper transition hover:-translate-y-0.5"
-              >
-                I have something to give <ArrowUpRight size={18} />
-              </Link>
-              <Link
-                href="/need/new"
-                className="inline-flex items-center gap-2 border border-ink px-5 py-4 text-sm font-bold uppercase tracking-wide transition hover:bg-ink hover:text-paper"
-              >
-                I need something <ArrowUpRight size={18} />
-              </Link>
-              <Link
-                href="/give"
-                className="inline-flex items-center gap-2 px-2 py-4 text-sm font-bold uppercase tracking-wide u-link"
-              >
-                Explore the market <MoveRight size={16} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Marquee
-        items={[
-          "Nothing for sale",
-          "Everything to give",
-          "Keep it moving",
-          "Everyone has something to give",
-        ]}
+            <span className="text-accent-ink">Everything</span> to give.
+          </>
+        }
+        description="Give what you have, ask for what you need, and keep generosity moving. No prices. No payments. Just people sharing."
+        ctaText="I have something to give"
+        ctaHref="/give/new"
+        secondaryCtaText="Explore the market"
+        secondaryCtaHref="/give"
+        images={HERO_IMAGES}
       />
 
       {/* Impact */}
